@@ -1,13 +1,22 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+// 引入iView UI
+import iView from 'iview'
+import 'iview/dist/styles/iview.css'
+
+
+
+import App from './components/App';
+
+import Welcome from './components/Welcome';
+
+import Page from './components/Page';
+
+import Home from './components/Home'
+
 Vue.use(VueRouter)
-
-import App from './components/App'
-
-import Welcome from './components/Welcome'
-
-import Page from './components/Page'
+Vue.use(iView)
 
 const router = new VueRouter({
     mode:'history',
@@ -30,12 +39,17 @@ const router = new VueRouter({
                     code:"经常写代码"
                 }
             }
+        },
+        {
+            path:'/test1',
+            name:'test1',
+            component:Home
         }
     ]
 })
 
 const app = new Vue({
     el:'#app',
-    components:{App},
     router,
+    render: h => h(App)
 })
