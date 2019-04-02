@@ -17,6 +17,16 @@ Route::get('/','AppController@getApp');
 Route::get('/page','AppController@getPage');
 
 
+//https://blog.pusher.com/why-vuejs-laravel/
+//如下形式访问
+//http://www.cms.com/spa-page
+//http://www.cms.com/home
+Route::get('/{any}', function(){
+    return view('vueapp');
+})->where('any', '.*');
+
+
+
 Route::match(['get', 'post'],'/home/add','HomeController@add');
 
 
