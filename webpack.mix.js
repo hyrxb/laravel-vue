@@ -1,14 +1,7 @@
 let mix = require('laravel-mix');
 
 /*
- |--------------------------------------------------------------------------
- | Mix Asset Management
- |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel application. By default, we are compiling the Sass
- | file for the application as well as bundling up all the JS files.
- |
+ * 这里注意需要增加版本，不然有缓存，会导致vue模块不加载
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
