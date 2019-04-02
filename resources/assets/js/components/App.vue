@@ -27,20 +27,9 @@
         <Layout>
             <Header>
                 <Menu mode="horizontal" theme="dark" active-name="1">
-                    <div class="layout-logo"></div>
-                    <div class="layout-nav">
-                        <MenuItem name="1">
-                            <Icon type="ios-navigate"></Icon>
-                            <router-link :to="{ name: 'welcome' }" class="nav-link">Home</router-link>
-                        </MenuItem>
-                        <MenuItem name="2">
-                            <Icon type="ios-keypad"></Icon>
-                            <router-link :to="{ name: 'page' }"  class="nav-link" >Spa-Page</router-link>
-                        </MenuItem>
-                        <MenuItem name="3">
-                            <Icon type="ios-analytics"></Icon>
-                            <router-link :to="{ name: 'test1' }"  class="nav-link">test1</router-link>
-                        </MenuItem>
+                    <div class="" style="color: #00a7d0">电影管理平台</div>
+                    <div>
+                        <Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" />
                     </div>
                 </Menu>
             </Header>

@@ -15,6 +15,7 @@
 Route::get('/','AppController@getApp');
 
 Route::get('/page','AppController@getPage');
+Route::post('/pic','AppController@upload');
 
 
 //https://blog.pusher.com/why-vuejs-laravel/

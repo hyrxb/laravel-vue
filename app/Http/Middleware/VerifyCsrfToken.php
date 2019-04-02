@@ -14,6 +14,7 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         'home/upload',
         'mp/upload',
-        'mp/logo'
+        'mp/logo',
+        '/pic'
     ];
 }

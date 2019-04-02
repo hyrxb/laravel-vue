@@ -149,17 +149,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
@@ -221,22 +210,129 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            formItem: {
-                input: '',
-                select: '',
-                radio: 'male',
-                checkbox: [],
-                switch: true,
+            formValidate: {
+                name: '',
+                intro: '',
+                city: '',
+                gender: '',
+                interest: [],
                 date: '',
                 time: '',
-                slider: [20, 50],
-                textarea: ''
-            }
+                desc: ''
+            },
+            ruleValidate: {
+                name: [{ required: true, message: '电影标题不能为空', trigger: 'blur' }],
+                intro: [{ required: true, message: '简介不能为空', trigger: 'blur' }],
+                city: [{ required: true, message: 'Please select the city', trigger: 'change' }],
+                gender: [{ required: true, message: 'Please select gender', trigger: 'change' }],
+                interest: [{ required: true, type: 'array', min: 1, message: 'Choose at least one hobby', trigger: 'change' }, { type: 'array', max: 2, message: 'Choose two hobbies at best', trigger: 'change' }],
+                date: [{ required: true, type: 'date', message: 'Please select the date', trigger: 'change' }],
+                time: [{ required: true, type: 'string', message: 'Please select time', trigger: 'change' }],
+                desc: [{ required: true, message: 'Please enter a personal introduction', trigger: 'blur' }, { type: 'string', min: 20, message: 'Introduce no less than 20 words', trigger: 'blur' }]
+            },
+            defaultList: [{
+                'name': 'a42bdcc1178e62b4694c830f028db5c0',
+                'url': 'https://o5wwk8baw.qnssl.com/a42bdcc1178e62b4694c830f028db5c0/avatar'
+            }, {
+                'name': 'bc7521e033abdd1e92222d733590f104',
+                'url': 'https://o5wwk8baw.qnssl.com/bc7521e033abdd1e92222d733590f104/avatar'
+            }],
+            imgName: '',
+            visible: false,
+            uploadList: []
         };
+    },
+
+    methods: {
+        handleSubmit: function handleSubmit(name) {
+            var _this = this;
+
+            this.$refs[name].validate(function (valid) {
+                if (valid) {
+                    _this.$Message.success('Success!');
+                } else {
+                    _this.$Message.error('Fail!');
+                }
+            });
+        },
+        handleReset: function handleReset(name) {
+            this.$refs[name].resetFields();
+        },
+        handleView: function handleView(name) {
+            this.imgName = name;
+            this.visible = true;
+        },
+        handleRemove: function handleRemove(file) {
+            var fileList = this.$refs.upload.fileList;
+            this.$refs.upload.fileList.splice(fileList.indexOf(file), 1);
+        },
+        handleSuccess: function handleSuccess(res, file) {
+            file.url = 'https://o5wwk8baw.qnssl.com/7eb99afb9d5f317c912f08b5212fd69a/avatar';
+            file.name = '7eb99afb9d5f317c912f08b5212fd69a';
+        },
+        handleFormatError: function handleFormatError(file) {
+            this.$Notice.warning({
+                title: 'The file format is incorrect',
+                desc: 'File format of ' + file.name + ' is incorrect, please select jpg or png.'
+            });
+        },
+        handleMaxSize: function handleMaxSize(file) {
+            this.$Notice.warning({
+                title: 'Exceeding file size limit',
+                desc: 'File  ' + file.name + ' is too large, no more than 2M.'
+            });
+        },
+        handleBeforeUpload: function handleBeforeUpload() {
+            var check = this.uploadList.length < 5;
+            if (!check) {
+                this.$Notice.warning({
+                    title: 'Up to five pictures can be uploaded.'
+                });
+            }
+            return check;
+        }
+    },
+    mounted: function mounted() {
+        this.uploadList = this.$refs.upload.fileList;
     }
 });
 
@@ -336,6 +432,21 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 // module
 exports.push([module.i, "\nhtml[data-v-410d367b], body[data-v-410d367b] {\n    background-color: #fff;\n    color: #636b6f;\n    font-family: 'Raleway', sans-serif;\n    font-weight: 100;\n    height: 100vh;\n    margin: 0;\n}\n.full-height[data-v-410d367b] {\n    height: 100vh;\n}\n.flex-center[data-v-410d367b] {\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.position-ref[data-v-410d367b] {\n    position: relative;\n}\n.top-right[data-v-410d367b] {\n    position: absolute;\n    right: 10px;\n    top: 18px;\n}\n.content[data-v-410d367b] {\n    text-align: center;\n}\n.title[data-v-410d367b] {\n    font-size: 84px;\n}\n.links > a[data-v-410d367b] {\n    color: #636b6f;\n    padding: 0 25px;\n    font-size: 12px;\n    font-weight: 600;\n    letter-spacing: .1rem;\n    text-decoration: none;\n    text-transform: uppercase;\n}\n.m-b-md[data-v-410d367b] {\n    margin-bottom: 30px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6707e3d4\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Home.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.demo-upload-list{\n    display: inline-block;\n    width: 60px;\n    height: 60px;\n    text-align: center;\n    line-height: 60px;\n    border: 1px solid transparent;\n    border-radius: 4px;\n    overflow: hidden;\n    background: #fff;\n    position: relative;\n    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.2);\n            box-shadow: 0 1px 1px rgba(0,0,0,.2);\n    margin-right: 4px;\n}\n.demo-upload-list img{\n    width: 100%;\n    height: 100%;\n}\n.demo-upload-list-cover{\n    display: none;\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    background: rgba(0,0,0,.6);\n}\n.demo-upload-list:hover .demo-upload-list-cover{\n    display: block;\n}\n.demo-upload-list-cover i{\n    color: #fff;\n    font-size: 20px;\n    cursor: pointer;\n    margin: 0 2px;\n}\n", ""]);
 
 // exports
 
@@ -43253,20 +43364,27 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "Form",
-    { attrs: { model: _vm.formItem, "label-width": 80 } },
+    {
+      ref: "formValidate",
+      attrs: {
+        model: _vm.formValidate,
+        rules: _vm.ruleValidate,
+        "label-width": 80
+      }
+    },
     [
       _c(
         "FormItem",
-        { attrs: { label: "电影标题" } },
+        { attrs: { label: "电影标题", prop: "name" } },
         [
           _c("Input", {
-            attrs: { placeholder: "Enter something..." },
+            attrs: { placeholder: "Enter your name" },
             model: {
-              value: _vm.formItem.input,
+              value: _vm.formValidate.name,
               callback: function($$v) {
-                _vm.$set(_vm.formItem, "input", $$v)
+                _vm.$set(_vm.formValidate, "name", $$v)
               },
-              expression: "formItem.input"
+              expression: "formValidate.name"
             }
           })
         ],
@@ -43275,17 +43393,156 @@ var render = function() {
       _vm._v(" "),
       _c(
         "FormItem",
-        { attrs: { label: "来源" } },
+        { attrs: { label: "电影简介", prop: "intro" } },
+        [
+          _c("Input", {
+            attrs: {
+              type: "textarea",
+              autosize: { minRows: 2, maxRows: 5 },
+              placeholder: ""
+            },
+            model: {
+              value: _vm.formValidate.intro,
+              callback: function($$v) {
+                _vm.$set(_vm.formValidate, "intro", $$v)
+              },
+              expression: "formValidate.intro"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "FormItem",
+        { attrs: { label: "封面" } },
+        [
+          [
+            _vm._l(_vm.uploadList, function(item) {
+              return _c(
+                "div",
+                { staticClass: "demo-upload-list" },
+                [
+                  item.status === "finished"
+                    ? [
+                        _c("img", { attrs: { src: item.url } }),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "demo-upload-list-cover" },
+                          [
+                            _c("Icon", {
+                              attrs: { type: "ios-eye-outline" },
+                              nativeOn: {
+                                click: function($event) {
+                                  return _vm.handleView(item.name)
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("Icon", {
+                              attrs: { type: "ios-trash-outline" },
+                              nativeOn: {
+                                click: function($event) {
+                                  return _vm.handleRemove(item)
+                                }
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ]
+                    : [
+                        item.showProgress
+                          ? _c("Progress", {
+                              attrs: {
+                                percent: item.percentage,
+                                "hide-info": ""
+                              }
+                            })
+                          : _vm._e()
+                      ]
+                ],
+                2
+              )
+            }),
+            _vm._v(" "),
+            _c(
+              "Upload",
+              {
+                ref: "upload",
+                staticStyle: { display: "inline-block", width: "58px" },
+                attrs: {
+                  "show-upload-list": false,
+                  "on-success": _vm.handleSuccess,
+                  format: ["jpg", "jpeg", "png"],
+                  "max-size": 2048,
+                  multiple: "",
+                  type: "drag",
+                  action: "http://www.cms.com/pic"
+                }
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticStyle: {
+                      width: "58px",
+                      height: "58px",
+                      "line-height": "58px"
+                    }
+                  },
+                  [_c("Icon", { attrs: { type: "ios-camera", size: "20" } })],
+                  1
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "Modal",
+              {
+                attrs: { title: "View Image" },
+                model: {
+                  value: _vm.visible,
+                  callback: function($$v) {
+                    _vm.visible = $$v
+                  },
+                  expression: "visible"
+                }
+              },
+              [
+                _vm.visible
+                  ? _c("img", {
+                      staticStyle: { width: "100%" },
+                      attrs: {
+                        src:
+                          "https://o5wwk8baw.qnssl.com/" +
+                          _vm.imgName +
+                          "/large"
+                      }
+                    })
+                  : _vm._e()
+              ]
+            )
+          ]
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c(
+        "FormItem",
+        { attrs: { label: "City", prop: "city" } },
         [
           _c(
             "Select",
             {
+              attrs: { placeholder: "Select your city" },
               model: {
-                value: _vm.formItem.select,
+                value: _vm.formValidate.city,
                 callback: function($$v) {
-                  _vm.$set(_vm.formItem, "select", $$v)
+                  _vm.$set(_vm.formValidate, "city", $$v)
                 },
-                expression: "formItem.select"
+                expression: "formValidate.city"
               }
             },
             [
@@ -43307,7 +43564,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "FormItem",
-        { attrs: { label: "上映时间" } },
+        { attrs: { label: "Date" } },
         [
           _c(
             "Row",
@@ -43316,16 +43573,57 @@ var render = function() {
                 "Col",
                 { attrs: { span: "11" } },
                 [
-                  _c("DatePicker", {
-                    attrs: { type: "date", placeholder: "Select date" },
-                    model: {
-                      value: _vm.formItem.date,
-                      callback: function($$v) {
-                        _vm.$set(_vm.formItem, "date", $$v)
-                      },
-                      expression: "formItem.date"
-                    }
-                  })
+                  _c(
+                    "FormItem",
+                    { attrs: { prop: "date" } },
+                    [
+                      _c("DatePicker", {
+                        attrs: { type: "date", placeholder: "Select date" },
+                        model: {
+                          value: _vm.formValidate.date,
+                          callback: function($$v) {
+                            _vm.$set(_vm.formValidate, "date", $$v)
+                          },
+                          expression: "formValidate.date"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "Col",
+                {
+                  staticStyle: { "text-align": "center" },
+                  attrs: { span: "2" }
+                },
+                [_vm._v("-")]
+              ),
+              _vm._v(" "),
+              _c(
+                "Col",
+                { attrs: { span: "11" } },
+                [
+                  _c(
+                    "FormItem",
+                    { attrs: { prop: "time" } },
+                    [
+                      _c("TimePicker", {
+                        attrs: { type: "time", placeholder: "Select time" },
+                        model: {
+                          value: _vm.formValidate.time,
+                          callback: function($$v) {
+                            _vm.$set(_vm.formValidate, "time", $$v)
+                          },
+                          expression: "formValidate.time"
+                        }
+                      })
+                    ],
+                    1
+                  )
                 ],
                 1
               )
@@ -43338,17 +43636,17 @@ var render = function() {
       _vm._v(" "),
       _c(
         "FormItem",
-        { attrs: { label: "Radio" } },
+        { attrs: { label: "Gender", prop: "gender" } },
         [
           _c(
             "RadioGroup",
             {
               model: {
-                value: _vm.formItem.radio,
+                value: _vm.formValidate.gender,
                 callback: function($$v) {
-                  _vm.$set(_vm.formItem, "radio", $$v)
+                  _vm.$set(_vm.formValidate, "gender", $$v)
                 },
-                expression: "formItem.radio"
+                expression: "formValidate.gender"
               }
             },
             [
@@ -43364,17 +43662,17 @@ var render = function() {
       _vm._v(" "),
       _c(
         "FormItem",
-        { attrs: { label: "Checkbox" } },
+        { attrs: { label: "Hobby", prop: "interest" } },
         [
           _c(
             "CheckboxGroup",
             {
               model: {
-                value: _vm.formItem.checkbox,
+                value: _vm.formValidate.interest,
                 callback: function($$v) {
-                  _vm.$set(_vm.formItem, "checkbox", $$v)
+                  _vm.$set(_vm.formValidate, "interest", $$v)
                 },
-                expression: "formItem.checkbox"
+                expression: "formValidate.interest"
               }
             },
             [
@@ -43394,55 +43692,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "FormItem",
-        { attrs: { label: "Switch" } },
-        [
-          _c(
-            "i-switch",
-            {
-              attrs: { size: "large" },
-              model: {
-                value: _vm.formItem.switch,
-                callback: function($$v) {
-                  _vm.$set(_vm.formItem, "switch", $$v)
-                },
-                expression: "formItem.switch"
-              }
-            },
-            [
-              _c("span", { attrs: { slot: "open" }, slot: "open" }, [
-                _vm._v("On")
-              ]),
-              _vm._v(" "),
-              _c("span", { attrs: { slot: "close" }, slot: "close" }, [
-                _vm._v("Off")
-              ])
-            ]
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "FormItem",
-        { attrs: { label: "Slider" } },
-        [
-          _c("Slider", {
-            attrs: { range: "" },
-            model: {
-              value: _vm.formItem.slider,
-              callback: function($$v) {
-                _vm.$set(_vm.formItem, "slider", $$v)
-              },
-              expression: "formItem.slider"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "FormItem",
-        { attrs: { label: "Text" } },
+        { attrs: { label: "Desc", prop: "desc" } },
         [
           _c("Input", {
             attrs: {
@@ -43451,11 +43701,11 @@ var render = function() {
               placeholder: "Enter something..."
             },
             model: {
-              value: _vm.formItem.textarea,
+              value: _vm.formValidate.desc,
               callback: function($$v) {
-                _vm.$set(_vm.formItem, "textarea", $$v)
+                _vm.$set(_vm.formValidate, "desc", $$v)
               },
-              expression: "formItem.textarea"
+              expression: "formValidate.desc"
             }
           })
         ],
@@ -43465,11 +43715,31 @@ var render = function() {
       _c(
         "FormItem",
         [
-          _c("Button", { attrs: { type: "primary" } }, [_vm._v("Submit")]),
+          _c(
+            "Button",
+            {
+              attrs: { type: "primary" },
+              on: {
+                click: function($event) {
+                  return _vm.handleSubmit("formValidate")
+                }
+              }
+            },
+            [_vm._v("Submit")]
+          ),
           _vm._v(" "),
-          _c("Button", { staticStyle: { "margin-left": "8px" } }, [
-            _vm._v("Cancel")
-          ])
+          _c(
+            "Button",
+            {
+              staticStyle: { "margin-left": "8px" },
+              on: {
+                click: function($event) {
+                  return _vm.handleReset("formValidate")
+                }
+              }
+            },
+            [_vm._v("Reset")]
+          )
         ],
         1
       )
@@ -43516,65 +43786,18 @@ var render = function() {
                   }
                 },
                 [
-                  _c("div", { staticClass: "layout-logo" }),
+                  _c("div", { staticStyle: { color: "#00a7d0" } }, [
+                    _vm._v("电影管理平台")
+                  ]),
                   _vm._v(" "),
                   _c(
                     "div",
-                    { staticClass: "layout-nav" },
                     [
-                      _c(
-                        "MenuItem",
-                        { attrs: { name: "1" } },
-                        [
-                          _c("Icon", { attrs: { type: "ios-navigate" } }),
-                          _vm._v(" "),
-                          _c(
-                            "router-link",
-                            {
-                              staticClass: "nav-link",
-                              attrs: { to: { name: "welcome" } }
-                            },
-                            [_vm._v("Home")]
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "MenuItem",
-                        { attrs: { name: "2" } },
-                        [
-                          _c("Icon", { attrs: { type: "ios-keypad" } }),
-                          _vm._v(" "),
-                          _c(
-                            "router-link",
-                            {
-                              staticClass: "nav-link",
-                              attrs: { to: { name: "page" } }
-                            },
-                            [_vm._v("Spa-Page")]
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "MenuItem",
-                        { attrs: { name: "3" } },
-                        [
-                          _c("Icon", { attrs: { type: "ios-analytics" } }),
-                          _vm._v(" "),
-                          _c(
-                            "router-link",
-                            {
-                              staticClass: "nav-link",
-                              attrs: { to: { name: "test1" } }
-                            },
-                            [_vm._v("test1")]
-                          )
-                        ],
-                        1
-                      )
+                      _c("Avatar", {
+                        attrs: {
+                          src: "https://i.loli.net/2017/08/21/599a521472424.jpg"
+                        }
+                      })
                     ],
                     1
                   )
@@ -46420,6 +46643,33 @@ if(false) {
  if(!content.locals) {
    module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-410d367b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Welcome.vue", function() {
      var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-410d367b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Welcome.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6707e3d4\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Home.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6707e3d4\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Home.vue");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("45389811", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6707e3d4\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Home.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6707e3d4\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Home.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -58763,6 +59013,10 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6707e3d4\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Home.vue")
+}
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
 var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/Home.vue")
@@ -58771,7 +59025,7 @@ var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/templa
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
