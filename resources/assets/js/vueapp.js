@@ -15,6 +15,10 @@ import Page from './components/Page';
 
 import Home from './components/Home'
 
+import Learn from './components/Learn'
+
+import Learn1 from './components/Learn1'
+
 Vue.use(VueRouter)
 Vue.use(iView)
 
@@ -44,9 +48,26 @@ const router = new VueRouter({
             path:'/test1',
             name:'test1',
             component:Home
+        },
+        {
+            path:'/learn',
+            name:'leran',
+            component:Learn
+        },
+        {
+            path:'/learn2',
+            name:'learn2',
+            component:Learn1
         }
+
     ]
 })
+
+
+Vue.filter('msgFormat',function(msg){
+    return msg.replace('好',"*");
+});
+
 
 const app = new Vue({
     el:'#app',

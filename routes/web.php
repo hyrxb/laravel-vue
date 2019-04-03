@@ -22,9 +22,15 @@ Route::post('/pic','AppController@upload');
 //如下形式访问
 //http://www.cms.com/spa-page
 //http://www.cms.com/home
-//Route::get('/{any}', function(){
-//    return view('vueapp');
-//})->where('any', '.*');
+Route::get('/{any}', function(){
+    return view('vueapp');
+})->where('any', '.*');
+
+
+Route::get('/test001', function () {
+    event(new App\Events\StatusLiked('Someone'));
+    return "Event has been sent!";
+});
 
 
 Route::get('/product/index','ProductController@index');

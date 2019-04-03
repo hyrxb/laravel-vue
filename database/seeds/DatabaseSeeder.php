@@ -7,6 +7,8 @@ class DatabaseSeeder extends Seeder
     /**
      * Run the database seeds.
      *
+     * php artisan migrate:fresh --seed
+
      * @return void
      */
     public function run()
