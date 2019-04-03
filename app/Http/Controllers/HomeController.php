@@ -12,8 +12,12 @@ use Elasticsearch\ClientBuilder;
 class HomeController extends Controller
 {
 
+    /**
+     * https://blog.usejournal.com/building-a-product-search-app-with-laravel-and-ajax-1d304544da0d
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function welcome(){
-        return view('welcome');
+        return view('index');
     }
 
     /**

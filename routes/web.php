@@ -22,15 +22,19 @@ Route::post('/pic','AppController@upload');
 //如下形式访问
 //http://www.cms.com/spa-page
 //http://www.cms.com/home
-Route::get('/{any}', function(){
-    return view('vueapp');
-})->where('any', '.*');
+//Route::get('/{any}', function(){
+//    return view('vueapp');
+//})->where('any', '.*');
 
+
+Route::get('/product/index','ProductController@index');
+Route::get('/product/search','ProductController@search');
 
 
 Route::match(['get', 'post'],'/home/add','HomeController@add');
 
 
+Route::get('/home/welcome','HomeController@welcome');
 Route::get('/home/index','HomeController@index');
 
 Route::post('/home/upload','HomeController@upload');

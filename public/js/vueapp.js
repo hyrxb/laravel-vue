@@ -306,6 +306,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$refs.upload.fileList.splice(fileList.indexOf(file), 1);
         },
         handleSuccess: function handleSuccess(res, file) {
+            console.log(file);
             file.url = 'https://o5wwk8baw.qnssl.com/7eb99afb9d5f317c912f08b5212fd69a/avatar';
             file.name = '7eb99afb9d5f317c912f08b5212fd69a';
         },
