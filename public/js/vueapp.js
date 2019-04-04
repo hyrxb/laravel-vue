@@ -422,6 +422,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -440,7 +442,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             list3: [{ id: 1, name: "宝马", time: "2017-03-01" }, { id: 1, name: "宝马1", time: "2017-03-01" }, { id: 1, name: "宝马2", time: "2017-03-01" }, { id: 1, name: "宝马3", time: "2017-03-01" }, { id: 1, name: "宝马4", time: "2017-03-01" }],
             name: '',
             time: '',
-            id: ''
+            id: '',
+            datetime: '2019-03-01'
         };
     },
 
@@ -493,6 +496,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
             return newlist;
+        }
+    },
+    filters: {
+        dateFormat: function dateFormat(dataStr) {
+            var pattern = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+            var dt = new Date(dataStr);
+            var y = dt.getFullYear();
+            var m = dt.getMonth() + 1;
+            var d = dt.getDay();
+
+            var hh = dt.getHours();
+            var mm = dt.getMinutes();
+            var ss = dt.getSeconds();
+
+            if (pattern == "yy-mm-dd") {
+                return y + '-' + m + '-' + d + "～";
+            } else {
+                return y + '-' + m + '-' + d + " " + hh + ":" + mm + ":" + ss + "~";
+            }
         }
     }
 });
@@ -43783,7 +43806,9 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm._f("msgFormat")(_vm.msg2)))])
+      _c("p", [_vm._v(_vm._s(_vm._f("msgFormat")(_vm.msg2)))]),
+      _vm._v(" "),
+      _c("p", [_vm._v(_vm._s(_vm._f("dateFormat")(_vm.datetime)))])
     ],
     2
   )
@@ -59691,6 +59716,28 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.filter('msgFormat', function (msg) {
     return msg.replace('好', "*");
 });
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.filter('dateFormat', function (dataStr) {
+    var pattern = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+    var dt = new Date(dataStr);
+    var y = dt.getFullYear();
+    var m = dt.getMonth() + 1;
+    var d = dt.getDay();
+
+    var hh = dt.getHours();
+    var mm = dt.getMinutes();
+    var ss = dt.getSeconds();
+
+    if (pattern == "yy-mm-dd") {
+        return y + '-' + m + '-' + d;
+    } else {
+        return y + '-' + m + '-' + d + " " + hh + ":" + mm + ":" + ss;
+    }
+});
+
+//自定义全局按键修饰符
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.config.keyCodes.f2 = 113;
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: '#app',

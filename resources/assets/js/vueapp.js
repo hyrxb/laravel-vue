@@ -69,6 +69,27 @@ Vue.filter('msgFormat',function(msg){
 });
 
 
+Vue.filter('dateFormat',function(dataStr,pattern=""){
+    var dt = new Date(dataStr);
+    var y = dt.getFullYear();
+    var m = dt.getMonth() + 1;
+    var d= dt.getDay();
+
+    var hh = dt.getHours();
+    var mm = dt.getMinutes();
+    var ss = dt.getSeconds();
+
+    if(pattern == "yy-mm-dd"){
+        return y + '-' + m + '-' + d
+    }else{
+        return y + '-' + m + '-' + d + " " + hh + ":" + mm + ":" + ss;
+    }
+
+});
+
+//自定义全局按键修饰符
+Vue.config.keyCodes.f2 = 113;
+
 const app = new Vue({
     el:'#app',
     router,

@@ -18,7 +18,35 @@ class HomeController extends Controller
      */
     public function welcome(){
 
-        return view('index');
+//        $data = [
+//            'name'=>'搜索部',
+//            'parent'=>'3',
+//            'status'=>'0',
+//            'level'=>3
+//        ];
+
+        $data = [
+            [
+                'name'=>'数据产品组',
+                'parent'=>'6',
+                'status'=>'0',
+                'level'=>4
+            ],
+            [
+                'name'=>'开发组',
+                'parent'=>'6',
+                'status'=>'0',
+                'level'=>4
+            ],
+            [
+                'name'=>'搜索产品组',
+                'parent'=>'6',
+                'status'=>'0',
+                'level'=>4
+            ]
+        ];
+
+        DB::table('departments')->insert($data);
     }
 
     /**

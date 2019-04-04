@@ -65,6 +65,8 @@
     </table>
 
     <p>{{msg2|msgFormat}}</p>
+
+    <p>{{datetime|dateFormat}}</p>
 </div>
 </template>
 <style>
@@ -109,7 +111,8 @@
                 ],
                 name:'',
                 time:'',
-                id:''
+                id:'',
+                datetime:'2019-03-01'
             }
         },
         methods:{
@@ -161,6 +164,24 @@
                 return newlist;
             }
 
+        },
+        filters:{
+            dateFormat:function(dataStr,pattern=""){
+                var dt = new Date(dataStr);
+                var y = dt.getFullYear();
+                var m = dt.getMonth() + 1;
+                var d= dt.getDay();
+
+                var hh = dt.getHours();
+                var mm = dt.getMinutes();
+                var ss = dt.getSeconds();
+
+                if(pattern == "yy-mm-dd"){
+                    return y + '-' + m + '-' + d + "～";
+                }else{
+                    return y + '-' + m + '-' + d + " " + hh + ":" + mm + ":" + ss + "~";
+                }
+            }
         }
     }
 
